@@ -10,6 +10,7 @@
   "dependencies": {
     "@fluentui/react": "^7.153.2",
     "@uifabric/merge-styles": "^7.19.1",
+    "@uifabric/react-cards": "^0.114.18",
     "@uifabric/utilities": "^7.33.2",
     "next": "10.0.3",
     "react": "17.0.1",

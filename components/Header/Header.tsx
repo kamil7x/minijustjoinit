@@ -1,6 +1,6 @@
 import { IStackStyles, IStackTokens, Stack } from '@fluentui/react';
 
-import { sizing } from '../../theme/theme';
+import {palette, sizing} from '../../theme/theme';
 
 const stackTokens: IStackTokens = {
   padding: sizing(3),
@@ -13,7 +13,7 @@ const stackStyles: IStackStyles = {
     left: 0,
     right: 0,
     height: sizing(10),
-    borderBottom: '1px solid lightgrey',
+    borderBottom: `1px solid ${palette.primary}`,
   },
 };
 
