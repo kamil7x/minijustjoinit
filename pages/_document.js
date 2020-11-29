@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { InjectionMode, Stylesheet } from '@uifabric/merge-styles';
 import { resetIds } from '@uifabric/utilities';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 const stylesheet = Stylesheet.getInstance();
 
@@ -23,7 +23,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <Html>
         <Head>
           <style
             type="text/css"
@@ -34,7 +34,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
