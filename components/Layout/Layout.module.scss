@@ -1,0 +1,6 @@
+@import 'styles/theme';
+@import 'styles/mixins';
+
+.layout {
+  padding: sizing(3) + $header-height sizing(3) sizing(3);
+}

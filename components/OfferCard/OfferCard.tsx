@@ -1,67 +1,17 @@
-import {
-  IImageStyles,
-  ITextStyles,
-  Icon,
-  Image,
-  ImageFit,
-  Text,
-} from '@fluentui/react';
-import {
-  Card,
-  ICardSectionStyles,
-  ICardStyles,
-  ICardTokens,
-} from '@uifabric/react-cards';
+import { Icon, Image, Text } from '@fluentui/react';
+import { Card, ICardTokens } from '@uifabric/react-cards';
 
 import { JobOffer } from '../../interfaces/JobOffer';
-import { palette, sizing } from '../../theme/theme';
+import { sizing } from '../../theme/theme';
+
+import styles from './OfferCard.module.scss';
 
 interface OfferCardProps {
   offer: JobOffer;
 }
 
-const cardStyles: ICardStyles = {
-  root: {
-    width: '100%',
-    maxWidth: sizing(40),
-    height: '100%',
-    padding: sizing(2),
-    cursor: 'inherit',
-  },
-};
-
 const cardTokens: ICardTokens = {
-  boxShadow: `0 1.6px 3.6px 0 ${palette.boxShadow}, 0 0.3px 0.9px 0 ${palette.boxShadowSecondary}`,
-  boxShadowHovered: `0 1.6px 3.6px 0 ${palette.boxShadowDark}, 0 0.3px 0.9px 0 ${palette.boxShadowSecondaryDark}`,
   childrenGap: sizing(1),
-};
-
-const locationStyles: ICardSectionStyles = {
-  root: {
-    color: palette.primary,
-  },
-};
-
-const headerStyles: ITextStyles = {
-  root: {
-    fontWeight: 'bold',
-  },
-};
-
-const salaryStyles: ITextStyles = {
-  root: {
-    color: palette.secondary,
-  },
-};
-
-const imageStyles: IImageStyles = {
-  root: {},
-  image: {
-    width: '100%',
-    height: '100%',
-    maxWidth: sizing(8),
-    maxHeight: sizing(8),
-  },
 };
 
 export const OfferCard = ({ offer }: OfferCardProps) => {
@@ -86,21 +36,25 @@ export const OfferCard = ({ offer }: OfferCardProps) => {
   };
 
   return (
-    <Card styles={cardStyles} tokens={cardTokens}>
+    <Card tokens={cardTokens} className={styles.offerCard}>
       <Card.Section
         horizontal
         horizontalAlign="space-between"
         verticalAlign="start"
         grow
       >
-        <Text variant="large" styles={headerStyles}>
+        <Text variant="large" className={styles.jobTitle}>
           {offer.title}
         </Text>
         {offer.company_logo_url && (
-          <Image styles={imageStyles} src={offer.company_logo_url} />
+          <Image className={styles.logo} src={offer.company_logo_url} />
         )}
       </Card.Section>
-      <Card.Section horizontal verticalAlign="center" styles={locationStyles}>
+      <Card.Section
+        horizontal
+        verticalAlign="center"
+        className={styles.location}
+      >
         <Icon iconName="MapPin" />
         <Text variant="small">{offer.city}</Text>
       </Card.Section>
@@ -110,7 +64,7 @@ export const OfferCard = ({ offer }: OfferCardProps) => {
         </Text>
       </Card.Item>
       <Card.Item align="end">
-        <Text styles={salaryStyles} variant="large">
+        <Text className={styles.salary} variant="large">
           {renderSalary(
             offer.salary_from,
             offer.salary_to,

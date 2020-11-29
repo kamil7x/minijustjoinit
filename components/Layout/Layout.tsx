@@ -1,17 +1,11 @@
-import { IStackStyles, Stack } from '@fluentui/react';
+import { Stack } from '@fluentui/react';
 
-import { sizing } from '../../theme/theme';
 import { Header } from '../Header/Header';
 
-const stackStyles: IStackStyles = {
-  root: {
-    padding: sizing(3),
-    paddingTop: sizing(13),
-  },
-};
+import styles from './Layout.module.scss';
 
 export const Layout: React.FC = ({ children }) => (
-  <Stack styles={stackStyles}>
+  <Stack className={styles.layout}>
     <Header />
     {children}
   </Stack>

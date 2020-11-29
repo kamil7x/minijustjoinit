@@ -1,6 +1,8 @@
-import { IStackStyles, IStackTokens, Stack, Text } from '@fluentui/react';
+import { IStackTokens, Stack, Text } from '@fluentui/react';
 
 import { sizing } from '../../theme/theme';
+
+import styles from './Section.module.scss';
 
 interface SectionProps {
   title?: string;
@@ -9,12 +11,6 @@ interface SectionProps {
 
 const headerTokens: IStackTokens = {
   childrenGap: sizing(3),
-};
-
-const contentStyles: IStackStyles = {
-  root: {
-    padding: `${sizing(3)} 0`,
-  },
 };
 
 export const Section: React.FC<SectionProps> = ({
@@ -32,6 +28,6 @@ export const Section: React.FC<SectionProps> = ({
       <Text variant="xLarge">{title}</Text>
       <Stack.Item>{actions}</Stack.Item>
     </Stack>
-    <Stack styles={contentStyles}>{children}</Stack>
+    <Stack className={styles.sectionContent}>{children}</Stack>
   </Stack>
 );

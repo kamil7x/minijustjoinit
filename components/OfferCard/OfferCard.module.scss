@@ -1,0 +1,38 @@
+@import 'styles/theme';
+@import 'styles/mixins';
+
+.offerCard {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  min-width: auto;
+  padding: sizing(2);
+  cursor: inherit;
+
+  box-shadow: 0 1.6px 3.6px 0 $color-boxShadow,
+    0 0.3px 0.9px 0 $color-boxShadowSecondary;
+
+  &:hover {
+    box-shadow: 0 1.6px 3.6px 0 $color-boxShadowDark,
+      0 0.3px 0.9px 0 $color-boxShadowSecondaryDark;
+  }
+}
+
+.jobTitle {
+  font-weight: bold;
+}
+
+.location {
+  color: $color-primary;
+}
+
+.salary {
+  color: $color-secondary;
+}
+
+.logo > img {
+  width: 100%;
+  height: 100%;
+  max-width: sizing(8);
+  max-height: sizing(8);
+}

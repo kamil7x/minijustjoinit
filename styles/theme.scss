@@ -1,0 +1,13 @@
+@function sizing($value) {
+  @return $value * 8px;
+}
+
+$color-primary: rgb(0, 0, 255);
+$color-white: rgb(255, 255, 255);
+$color-secondary: rgb(210, 40, 40);
+$color-boxShadow: rgba(0, 0, 255, 0.132);
+$color-boxShadowDark: rgba(0, 0, 255, 0.396);
+$color-boxShadowSecondary: rgba(0, 0, 255, 0.108);
+$color-boxShadowSecondaryDark: rgba(0, 0, 255, 0.324);
+
+$header-height: sizing(10);

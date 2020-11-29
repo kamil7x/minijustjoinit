@@ -1,0 +1,26 @@
+@import 'theme';
+@import 'mixins';
+
+.offerGrid {
+  margin: sizing(-1);
+}
+
+.offerLink {
+  margin: sizing(1);
+  width: 100%;
+  color: inherit !important;
+  text-decoration: none !important;
+
+  @include sm {
+    max-width: calc(50% - #{sizing(2)});
+  }
+  @include md {
+    max-width: calc(33% - #{sizing(2)});
+  }
+  @include lg {
+    max-width: calc(25% - #{sizing(2)});
+  }
+  @include xl {
+    max-width: calc((100% / 6) - #{sizing(2)});
+  }
+}
