@@ -1,31 +1,23 @@
-import { AnyAction, createStore } from 'redux';
+import { Store, applyMiddleware, createStore } from 'redux';
+import createSagaMiddleware, { Task } from 'redux-saga';
 
-import { Context, HYDRATE, MakeStore, createWrapper } from 'next-redux-wrapper';
+import { Context, MakeStore, createWrapper } from 'next-redux-wrapper';
 
-import { JobOffer } from '../interfaces/JobOffer';
+import rootReducer, { AppState } from './reducer';
+import rootSaga from './saga';
 
-export interface State {
-  offers: JobOffer[];
+export interface SagaStore extends Store {
+  sagaTask?: Task;
 }
 
-const initialState: State = {
-  offers: [],
+const makeStore: MakeStore<AppState> = (context: Context) => {
+  const sagaMiddleware = createSagaMiddleware();
+
+  const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+  (store as SagaStore).sagaTask = sagaMiddleware.run(rootSaga);
+
+  return store;
 };
 
-const reducer = (state: State = initialState, action: AnyAction) => {
-  switch (action.type) {
-    case HYDRATE:
-      return { ...state, ...action.payload };
-    case 'SET_OFFERS':
-      return {
-        ...state,
-        offers: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-
-const makeStore: MakeStore<State> = (context: Context) => createStore(reducer);
-
-export const wrapper = createWrapper<State>(makeStore, { debug: true });
+export const wrapper = createWrapper<AppState>(makeStore, { debug: false });

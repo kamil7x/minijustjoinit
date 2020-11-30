@@ -1,4 +1,5 @@
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { END } from 'redux-saga';
 
 import { Stack, Link as UILink } from '@fluentui/react';
 import Head from 'next/head';
@@ -7,12 +8,15 @@ import Link from 'next/link';
 import { Layout } from '../components/Layout/Layout';
 import { OfferCard } from '../components/OfferCard/OfferCard';
 import { Section } from '../components/Section/Section';
-import { State, wrapper } from '../store';
-import { getOffers } from '../store/service';
+import { SagaStore, wrapper } from '../store';
+import { fetchOffersList } from '../store/offers/actions';
+import { getOffersList } from '../store/offers/selectors';
 
 import styles from '../styles/Home.module.scss';
 
-const Home = ({ offers }) => {
+const Home = () => {
+  const offers = useSelector(getOffersList);
+
   return (
     <Layout>
       <Head>
@@ -34,17 +38,11 @@ const Home = ({ offers }) => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  async ({ store, req, res }) => {
-    const offers = await getOffers();
-    await store.dispatch({ type: 'SET_OFFERS', payload: offers });
-    const state = store.getState();
-
-    return {
-      props: {
-        offers: state.offers,
-      },
-    };
+  async ({ store }) => {
+    await store.dispatch(fetchOffersList());
+    await store.dispatch(END);
+    await (store as SagaStore).sagaTask.toPromise();
   },
 );
 
-export default connect((state: State) => state)(Home);
+export default Home;

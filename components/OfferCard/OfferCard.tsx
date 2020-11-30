@@ -14,27 +14,27 @@ const cardTokens: ICardTokens = {
   childrenGap: sizing(1),
 };
 
-export const OfferCard = ({ offer }: OfferCardProps) => {
-  const renderSalary = (salaryFrom, salaryTo, salaryCurrency) => {
-    if (!salaryFrom && !salaryTo) {
-      return 'Nie podano stawki';
-    }
-    const salaryParts = [];
-    if (salaryFrom) {
-      salaryParts.push(salaryFrom);
-    }
-    if (salaryFrom && salaryTo) {
-      salaryParts.push(' - ');
-    }
-    if (salaryTo) {
-      salaryParts.push(salaryTo);
-    }
-    if (salaryCurrency) {
-      salaryParts.push(` ${salaryCurrency.toUpperCase()}`);
-    }
-    return salaryParts.join('');
-  };
+const renderSalary = (salaryFrom, salaryTo, salaryCurrency) => {
+  if (!salaryFrom && !salaryTo) {
+    return 'Nie podano stawki';
+  }
+  const salaryParts = [];
+  if (salaryFrom) {
+    salaryParts.push(salaryFrom);
+  }
+  if (salaryFrom && salaryTo) {
+    salaryParts.push(' - ');
+  }
+  if (salaryTo) {
+    salaryParts.push(salaryTo);
+  }
+  if (salaryCurrency) {
+    salaryParts.push(` ${salaryCurrency.toUpperCase()}`);
+  }
+  return salaryParts.join('');
+};
 
+export const OfferCard = ({ offer }: OfferCardProps) => {
   return (
     <Card tokens={cardTokens} className={styles.offerCard}>
       <Card.Section
@@ -47,7 +47,11 @@ export const OfferCard = ({ offer }: OfferCardProps) => {
           {offer.title}
         </Text>
         {offer.company_logo_url && (
-          <Image className={styles.logo} src={offer.company_logo_url} />
+          <Image
+            shouldStartVisible={true}
+            className={styles.logo}
+            src={offer.company_logo_url}
+          />
         )}
       </Card.Section>
       <Card.Section
