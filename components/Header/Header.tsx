@@ -1,7 +1,7 @@
-import { IStackStyles, IStackTokens, Stack } from '@fluentui/react';
+import { IStackTokens, Stack } from '@fluentui/react';
 import Link from 'next/link';
 
-import { palette, sizing } from '../../theme/theme';
+import { sizing } from '../../theme/theme';
 import { Logo } from '../Logo/Logo';
 
 import styles from './Header.module.scss';
@@ -23,6 +23,5 @@ export const Header: React.FC = () => (
         <Logo />
       </a>
     </Link>
-    <Stack.Item>Filters</Stack.Item>
   </Stack>
 );

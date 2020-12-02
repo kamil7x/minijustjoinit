@@ -1,10 +1,12 @@
 import { useSelector } from 'react-redux';
 import { END } from 'redux-saga';
 
-import { Stack, Link as UILink } from '@fluentui/react';
+import { Stack, Text, Link as UILink } from '@fluentui/react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
+import { FilterIcons } from '../components/FilterIcons/FilterIcons';
 import { Layout } from '../components/Layout/Layout';
 import { OfferCard } from '../components/OfferCard/OfferCard';
 import { Section } from '../components/Section/Section';
@@ -14,24 +16,36 @@ import { getOffersList } from '../store/offers/selectors';
 
 import styles from '../styles/Home.module.scss';
 
+interface HomeQuery {
+  category: string;
+  page: number;
+}
+
 const Home = () => {
-  const offers = useSelector(getOffersList);
+  const router = useRouter();
+  // TODO: add proper pagination
+  const { category, page = 1 } = (router.query as unknown) as HomeQuery;
+  const offers = useSelector(getOffersList({ page, filter: category }));
 
   return (
     <Layout>
       <Head>
         <title>Mini JustJoinIT - Harder, Better, Faster, Stronger</title>
       </Head>
-      <Section title="Dostępne oferty">
-        <Stack horizontal wrap className={styles.offerGrid}>
-          {offers.map((offer) => (
-            <Link href={`offer/${offer.id}`} key={offer.id}>
-              <UILink as="a" className={styles.offerLink}>
-                <OfferCard offer={offer} />
-              </UILink>
-            </Link>
-          ))}
-        </Stack>
+      <Section title="Dostępne oferty" actions={<FilterIcons />}>
+        {offers.length ? (
+          <Stack horizontal wrap className={styles.offerGrid}>
+            {offers.map((offer) => (
+              <Link href={`offer/${offer.id}`} key={offer.id}>
+                <UILink  className={styles.offerLink}>
+                  <OfferCard offer={offer} />
+                </UILink>
+              </Link>
+            ))}
+          </Stack>
+        ) : (
+          <Text>Brak dostępnych ofert</Text>
+        )}
       </Section>
     </Layout>
   );

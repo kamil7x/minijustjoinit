@@ -1,0 +1,35 @@
+@import 'styles/theme';
+@import 'styles/mixins';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: sizing(4);
+  height: sizing(4);
+  padding: sizing(0.25);
+  transition: all 0.5s ease;
+  border-bottom: 1px solid transparent;
+  color: $color-tertiary;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  .icon {
+    width: sizing(4);
+    height: sizing(4);
+    fill: $color-tertiary;
+  }
+
+  &.active {
+    background: $color-primary;
+    border-radius: sizing(0.5);
+    border-color: $color-primary;
+    color: $color-white;
+
+    .icon {
+      fill: $color-white;
+    }
+  }
+}

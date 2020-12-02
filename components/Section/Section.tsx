@@ -24,6 +24,7 @@ export const Section: React.FC<SectionProps> = ({
       horizontalAlign="space-between"
       verticalAlign="center"
       tokens={headerTokens}
+      wrap
     >
       <Text variant="xLarge">{title}</Text>
       <Stack.Item>{actions}</Stack.Item>

@@ -2,9 +2,11 @@
   @return $value * 8px;
 }
 
-$color-primary: rgb(0, 0, 255);
-$color-white: rgb(255, 255, 255);
+$color-primary: rgb(64, 64, 255);
 $color-secondary: rgb(210, 40, 40);
+$color-tertiary: rgb(128, 128, 255);
+$color-white: rgb(255, 255, 255);
+
 $color-boxShadow: rgba(0, 0, 255, 0.132);
 $color-boxShadowDark: rgba(0, 0, 255, 0.396);
 $color-boxShadowSecondary: rgba(0, 0, 255, 0.108);
