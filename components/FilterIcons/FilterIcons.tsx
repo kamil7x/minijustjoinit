@@ -1,6 +1,5 @@
 import { IStackTokens, Label, Stack } from '@fluentui/react';
 import clsx from 'clsx';
-import DevIcon from 'devicon-react-svg';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -11,15 +10,9 @@ import styles from './FilterIcons.module.scss';
 interface FilterIconsProps {
   baseUrl?: string;
 }
-const availableFilters = [
-  'php',
-  'java',
-  'ruby',
-  'javascript',
-  'wordpress',
-];
+const availableFilters = ['php', 'java', 'ruby', 'net', 'wordpress'];
 const customIconsMap = {
-  ruby: 'ruby_rough',
+  net: 'dot-net',
 };
 
 const stackTokens: IStackTokens = {
@@ -47,7 +40,7 @@ export const FilterIcons = ({ baseUrl = '' }: FilterIconsProps) => {
         return (
           <Link href={url} key={filter}>
             <a className={clsx(styles.button, { [styles.active]: isActive })}>
-              <DevIcon className={styles.icon} icon={iconName} />
+              <i className={clsx(styles.icon, `devicon-${iconName}-plain`)} />
             </a>
           </Link>
         );

@@ -29,6 +29,7 @@ export default class MyDocument extends Document {
             type="text/css"
             dangerouslySetInnerHTML={{ __html: this.props.styleTags }}
           />
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css" />
         </Head>
         <body>
           <Main />
