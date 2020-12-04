@@ -6,7 +6,7 @@ import styles from './Section.module.scss';
 
 interface SectionProps {
   title?: string;
-  actions?: React.ReactElement;
+  extras?: React.ReactElement;
 }
 
 const headerTokens: IStackTokens = {
@@ -15,7 +15,7 @@ const headerTokens: IStackTokens = {
 
 export const Section: React.FC<SectionProps> = ({
   title,
-  actions,
+  extras,
   children,
 }) => (
   <Stack>
@@ -26,8 +26,12 @@ export const Section: React.FC<SectionProps> = ({
       tokens={headerTokens}
       wrap
     >
-      <Text variant="xLarge">{title}</Text>
-      <Stack.Item>{actions}</Stack.Item>
+      <Stack.Item>
+        <Text variant="xLarge">{title}</Text>
+      </Stack.Item>
+      <Stack.Item className={styles.extras}>
+        {extras}
+      </Stack.Item>
     </Stack>
     <Stack className={styles.sectionContent}>{children}</Stack>
   </Stack>

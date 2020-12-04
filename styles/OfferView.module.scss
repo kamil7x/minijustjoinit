@@ -1,0 +1,79 @@
+@import 'theme';
+@import 'mixins';
+
+.title {
+  font-weight: bold;
+}
+
+.salary {
+  color: $color-secondary;
+  font-weight: bold;
+}
+
+.card {
+  max-width: 100%;
+  padding: sizing(2);
+
+  @include sm {
+    width: 100%;
+  }
+}
+
+.leftColumn {
+  width: calc(70% - 16px);
+
+  @include xs {
+    width: 100%;
+  }
+  @include sm {
+    width: 100%;
+  }
+}
+
+.rightColumn {
+  width: calc(30% - 16px);
+
+  @include xs {
+    width: 100%;
+  }
+  @include sm {
+    width: 100%;
+  }
+}
+
+.techStackCard {
+  height: 100%;
+}
+
+.companyCard {
+  .logo {
+    & > img {
+      width: 100%;
+      height: auto;
+      max-width: sizing(20);
+
+      @include sm {
+        max-width: sizing(12);
+        max-height: sizing(12);
+      }
+
+      @include xs {
+        max-width: sizing(8);
+        max-height: sizing(8);
+      }
+    }
+  }
+}
+
+.infoBox {
+  width: 100%;
+  max-width: sizing(28);
+
+  @include sm {
+    max-width: 100%;
+  }
+}
+
+.companyLink {
+  color: $color-primary;
+}

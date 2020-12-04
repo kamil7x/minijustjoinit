@@ -21,7 +21,7 @@ interface HomeQuery {
   page: number;
 }
 
-const Home = () => {
+const Home: React.FC = () => {
   const router = useRouter();
   // TODO: add proper pagination
   const { category, page = 1 } = (router.query as unknown) as HomeQuery;
@@ -32,12 +32,12 @@ const Home = () => {
       <Head>
         <title>Mini JustJoinIT - Harder, Better, Faster, Stronger</title>
       </Head>
-      <Section title="Dostępne oferty" actions={<FilterIcons />}>
+      <Section title="Dostępne oferty" extras={<FilterIcons />}>
         {offers.length ? (
           <Stack horizontal wrap className={styles.offerGrid}>
             {offers.map((offer) => (
-              <Link href={`offer/${offer.id}`} key={offer.id}>
-                <UILink  className={styles.offerLink}>
+              <Link href={`offers/${encodeURIComponent(offer.id)}`} key={offer.id}>
+                <UILink className={styles.offerLink}>
                   <OfferCard offer={offer} />
                 </UILink>
               </Link>

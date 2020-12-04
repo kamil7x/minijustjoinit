@@ -3,6 +3,8 @@ import { Card, ICardTokens } from '@uifabric/react-cards';
 
 import { JobOffer } from '../../interfaces/JobOffer';
 import { sizing } from '../../theme/theme';
+import { Location } from '../Location/Location';
+import { Salary } from '../Salary/Salary';
 
 import styles from './OfferCard.module.scss';
 
@@ -12,26 +14,6 @@ interface OfferCardProps {
 
 const cardTokens: ICardTokens = {
   childrenGap: sizing(1),
-};
-
-const renderSalary = (salaryFrom, salaryTo, salaryCurrency) => {
-  if (!salaryFrom && !salaryTo) {
-    return 'Nie podano stawki';
-  }
-  const salaryParts = [];
-  if (salaryFrom) {
-    salaryParts.push(salaryFrom);
-  }
-  if (salaryFrom && salaryTo) {
-    salaryParts.push(' - ');
-  }
-  if (salaryTo) {
-    salaryParts.push(salaryTo);
-  }
-  if (salaryCurrency) {
-    salaryParts.push(` ${salaryCurrency.toUpperCase()}`);
-  }
-  return salaryParts.join('');
 };
 
 export const OfferCard = ({ offer }: OfferCardProps) => {
@@ -54,14 +36,9 @@ export const OfferCard = ({ offer }: OfferCardProps) => {
           />
         )}
       </Card.Section>
-      <Card.Section
-        horizontal
-        verticalAlign="center"
-        className={styles.location}
-      >
-        <Icon iconName="MapPin" />
-        <Text variant="small">{offer.city}</Text>
-      </Card.Section>
+      <Card.Item>
+        <Location parts={[offer.city]} />
+      </Card.Item>
       <Card.Item>
         <Text variant="small">
           {offer.skills.map((skill) => skill.name).join(', ')}
@@ -69,11 +46,11 @@ export const OfferCard = ({ offer }: OfferCardProps) => {
       </Card.Item>
       <Card.Item align="end">
         <Text className={styles.salary} variant="large">
-          {renderSalary(
-            offer.salary_from,
-            offer.salary_to,
-            offer.salary_currency,
-          )}
+          <Salary
+            from={offer.salary_from}
+            to={offer.salary_to}
+            currency={offer.salary_currency}
+          />
         </Text>
       </Card.Item>
     </Card>
