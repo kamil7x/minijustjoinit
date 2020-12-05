@@ -15,6 +15,7 @@ import { Card, ICardSectionTokens, ICardTokens } from '@uifabric/react-cards';
 import clsx from 'clsx';
 import Error from 'next/error';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { InfoBox } from '../../components/InfoBox/InfoBox';
@@ -90,7 +91,9 @@ const OfferView: React.FC = () => {
               horizontalAlign="space-between"
               verticalAlign="center"
             >
-              <Text variant="xLarge" className={styles.title}>{offer.title}</Text>
+              <Text variant="xLarge" className={styles.title}>
+                {offer.title}
+              </Text>
               <Text variant="xLarge" className={styles.salary}>
                 <Salary
                   from={offer.salary_from}
@@ -146,10 +149,18 @@ const OfferView: React.FC = () => {
                   <InfoBox
                     label="Adres"
                     value={
-                      <Location
-                        variant="medium"
-                        parts={[offer.street, offer.city, offer.country_code]}
-                      />
+                      <Link href={`/map?offer=${encodeURIComponent(offer.id)}`}>
+                        <a>
+                          <Location
+                            variant="medium"
+                            parts={[
+                              offer.street,
+                              offer.city,
+                              offer.country_code,
+                            ]}
+                          />
+                        </a>
+                      </Link>
                     }
                   />
                 </Stack.Item>

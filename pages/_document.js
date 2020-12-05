@@ -12,6 +12,8 @@ stylesheet.setConfig({
 });
 
 export default class MyDocument extends Document {
+  static displayName = 'Document';
+
   static getInitialProps({ renderPage }) {
     stylesheet.reset();
     resetIds();
@@ -29,7 +31,22 @@ export default class MyDocument extends Document {
             type="text/css"
             dangerouslySetInnerHTML={{ __html: this.props.styleTags }}
           />
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css" />
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css"
+          />
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          />
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
+          />
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
+          />
         </Head>
         <body>
           <Main />

@@ -16,15 +16,15 @@ import { getOffersList } from '../store/offers/selectors';
 
 import styles from '../styles/Home.module.scss';
 
-interface HomeQuery {
+interface HomeViewQuery {
   category: string;
   page: number;
 }
 
-const Home: React.FC = () => {
+const HomeView: React.FC = () => {
   const router = useRouter();
   // TODO: add proper pagination
-  const { category, page = 1 } = (router.query as unknown) as HomeQuery;
+  const { category, page = 1 } = (router.query as unknown) as HomeViewQuery;
   const offers = useSelector(getOffersList({ page, filter: category }));
 
   return (
@@ -59,4 +59,4 @@ export const getServerSideProps = wrapper.getServerSideProps(
   },
 );
 
-export default Home;
+export default HomeView;
