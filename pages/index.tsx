@@ -77,6 +77,13 @@ const HomeView: React.FC = () => {
                 onPageChange={onPageChange}
               />
             </Stack.Item>
+            <Stack.Item align="end" className={styles.paginationMobile}>
+              <Pagination
+                pageCount={pageCount}
+                selectedPageIndex={page - 1}
+                onPageChange={onPageChange}
+              />
+            </Stack.Item>
           </Stack>
         ) : (
           <Text>Brak dostępnych ofert</Text>

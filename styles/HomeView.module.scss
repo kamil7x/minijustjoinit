@@ -26,7 +26,30 @@
 }
 
 .pagination {
+  @include xs {
+    display: none;
+  }
+  @include sm {
+    display: none;
+  }
+
   & > div > div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.paginationMobile {
+  display: none;
+
+  @include xs {
+    display: initial;
+  }
+  @include sm {
+    display: initial;
+  }
+
+  & > div {
     display: flex;
     align-items: center;
   }

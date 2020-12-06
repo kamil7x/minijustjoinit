@@ -38,6 +38,9 @@ export const Map = ({ offers, highlightedOfferId }: Props) => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      {/* NOTE: There is a problem with 'react-leaflet-markercluster' */}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
       <MarkerClusterGroup>
         {offers.map((offer) => (
           <CustomMarker
