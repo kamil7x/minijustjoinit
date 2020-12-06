@@ -17,6 +17,7 @@
     "@uifabric/react-cards": "^0.114.18",
     "@uifabric/utilities": "^7.33.2",
     "clsx": "^1.1.1",
+    "date-fns": "^2.16.1",
     "leaflet": "^1.7.1",
     "next": "10.0.3",
     "next-redux-wrapper": "^6.0.2",

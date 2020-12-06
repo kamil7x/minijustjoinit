@@ -1,5 +1,4 @@
-import { IStackTokens, Icon, Stack, Text } from '@fluentui/react';
-import { IFontStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IStackTokens, Icon, Stack, Text, IFontStyles } from '@fluentui/react';
 
 import { sizing } from '../../theme/theme';
 

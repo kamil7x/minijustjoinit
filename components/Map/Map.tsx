@@ -1,9 +1,9 @@
 import { MapContainer, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 
+import { Link as UILink } from '@fluentui/react';
 import { LatLngTuple } from 'leaflet';
 import Link from 'next/link';
-import { Link as UILink } from 'office-ui-fabric-react/lib/components/Link/Link';
 
 import { JobOffer } from '../../interfaces/JobOffer';
 import { OfferCard } from '../OfferCard/OfferCard';
