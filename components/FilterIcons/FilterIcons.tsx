@@ -2,6 +2,7 @@ import { IStackTokens, Label, Stack } from '@fluentui/react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import queryString from 'query-string';
 
 import { sizing } from '../../theme/theme';
 
@@ -35,7 +36,12 @@ export const FilterIcons = ({ baseUrl = '' }: FilterIconsProps) => {
         const iconName = customIconsMap[filter] || filter;
         const isActive = category === filter;
 
-        const url = isActive ? baseUrl : `${baseUrl}/?category=${filter}`;
+        const url = queryString.stringifyUrl({
+          url: baseUrl,
+          query: {
+            category: filter,
+          },
+        });
 
         return (
           <Link href={url} key={filter}>

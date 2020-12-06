@@ -17,6 +17,7 @@ import Error from 'next/error';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import queryString from 'query-string';
 
 import { InfoBox } from '../../components/InfoBox/InfoBox';
 import { Layout } from '../../components/Layout/Layout';
@@ -77,6 +78,13 @@ const OfferView: React.FC = () => {
   if (!offer) {
     return <Error statusCode={404} />;
   }
+
+  const mapUrl = queryString.stringifyUrl({
+    url: '/map',
+    query: {
+      offer: offer.id,
+    },
+  });
 
   return (
     <Layout>
@@ -149,7 +157,7 @@ const OfferView: React.FC = () => {
                   <InfoBox
                     label="Adres"
                     value={
-                      <Link href={`/map?offer=${encodeURIComponent(offer.id)}`}>
+                      <Link href={mapUrl}>
                         <a>
                           <Location
                             variant="medium"

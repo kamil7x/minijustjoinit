@@ -24,3 +24,10 @@
     max-width: calc((100% / 6) - #{sizing(2)});
   }
 }
+
+.pagination {
+  & > div > div {
+    display: flex;
+    align-items: center;
+  }
+}

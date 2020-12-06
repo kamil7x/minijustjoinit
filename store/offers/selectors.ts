@@ -1,7 +1,6 @@
+import { PAGE_SIZE } from '../../helpers/pagination';
 import { JobOffer } from '../../interfaces/JobOffer';
 import { AppState } from '../reducer';
-
-const PAGE_SIZE = 24;
 
 interface GetOffersListOptions {
   page?: number;
@@ -29,3 +28,6 @@ export const getOffersList = ({ page, filter }: GetOffersListOptions = {}) => {
 
 export const getOffer = (id: string) => (state: AppState): JobOffer =>
   state.offers.list.find((offer) => offer.id === id);
+
+export const getOffersCount = (state: AppState): number =>
+  state.offers.list.length;
